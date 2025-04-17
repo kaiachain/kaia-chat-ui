@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Manrope:wght@200..800&display=swap');
+
+.chat-button {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0px 16px 32px 0px
+    var(--Color-Elevation-elevation-7, rgba(255, 255, 255, 0.18));
+
+  /* Position fixed at 44px from right and bottom */
+  position: fixed;
+  right: 44px;
+  bottom: 44px;
+
+  /* Add transition for smooth animation */
+  transition: transform 300ms ease-out;
+  cursor: pointer;
+
+  /* Add flexbox to center the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+/* Hover effect for desktop */
+@media (hover: hover) {
+  .chat-button.online:hover {
+    transform: translateY(-20px);
+  }
+}
+
+/* Active/click effect for mobile */
+@media (hover: none) {
+  .chat-button.online:active {
+    transform: translateY(-20px);
+  }
+}
+
+/* Online state styling */
+.chat-button.online.close {
+  background: #bff009;
+}
+
+/* Online state styling */
+.chat-button.online.open {
+  background: var(--Color-Greyscale-grey-9, #1c1c1c);
+}
+
+/* Offline state styling */
+.chat-button.offline {
+  background: #343434; /* Gray background for offline state */
+
+  /* shadow_faint_16.32 */
+  box-shadow: 0px var(--Sizing-3, 16px) var(--Sizing-7, 32px) 0px
+    var(--Color-Elevation-elevation-9, rgba(255, 255, 255, 0.07));
+}
+
+/* Control icon visibility based on status */
+.chat-button.online .offline-icon,
+.chat-button.offline .online-icon {
+  display: none;
+}
+
+.chat-button img {
+  flex-shrink: 0;
+  object-fit: contain;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.chat-button img.exiting {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.chat-button img.entering {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tooltip {
+  display: flex;
+  padding: 12px 16px;
+  align-items: flex-start;
+  gap: 16px;
+  width: 224px;
+  height: 40px;
+
+  border-radius: var(--Radius-3, 24px);
+  background: var(--Color-Greyscale-grey-8, #343434);
+
+  color: var(--Color-Greyscale-grey-0, #fff);
+  font-feature-settings: "cv13" on;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+
+  position: absolute;
+  bottom: 115px;
+  right: 36px;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 13%;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #343434 transparent transparent transparent;
+}

@@ -1,0 +1,33 @@
+.loading-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: #888;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.dot2 {
+  animation-delay: 0.2s;
+}
+
+.dot3 {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
