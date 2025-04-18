@@ -2,7 +2,7 @@ name: "Kaia Chat UI - Publish"
 
 on:
   push:
-    branches: [main,feat/add-CICD]
+    branches: [main]
 
 jobs:
   build:
