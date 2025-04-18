@@ -1,7 +1,7 @@
 {
   "name": "@kaiachain/kaia-chat-ui",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.0-test",
   "type": "module",
   "license": "MIT",
   "author": "Kaia Labs Developers",
