@@ -192,7 +192,7 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
   };
 
   return (
-    <div className="kai-chatbot-container">
+    <>
       <button
         className={`chat-button 
           ${isOnline ? "online" : "offline"} 
@@ -352,7 +352,7 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
           )}
         </div>
       )}
-    </div>
+      </>
   );
 };
 
