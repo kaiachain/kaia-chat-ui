@@ -15,6 +15,30 @@
   box-sizing: content-box;
 }
 
+/* Mobile positioning */
+@media (max-width: 768px) {
+  .chatbot-modal {
+    bottom: 106px;
+    right: 25px;
+  }
+  
+  /* For very small screens like iPhone SE (width < 600px) */
+  @media (max-width: 600px) {
+    .chatbot-modal {
+      width: calc(100vw - 50px); /* 100vw - right 25px - left 25px */
+      max-width: 380px;
+    }
+  }
+}
+
+/* For screens with height less than 700px */
+@media (max-height: 700px) {
+  .chatbot-modal {
+    height: 70vh !important;
+    max-height: 500px !important;
+  }
+}
+
 .chatbot-modal.entering {
   animation: slideUp 300ms ease-out forwards;
   box-sizing: content-box;

@@ -36,6 +36,14 @@
 
 }
 
+/* Mobile positioning */
+@media (max-width: 768px) {
+  .chat-button {
+    right: 25px;
+    bottom: 25px;
+  }
+}
+
 /* Hover effect for desktop */
 @media (hover: hover) {
   .chat-button.online:hover {
