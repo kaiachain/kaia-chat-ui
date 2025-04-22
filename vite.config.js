@@ -7,15 +7,6 @@ export default defineConfig({
   define: {
     'process.env': {}
   },
-  server: {
-    proxy: {
-      "/api": {
-        target: "https://api-aiagent.dev.kaia.io",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
-  },
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/main.js'),

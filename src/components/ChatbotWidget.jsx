@@ -5,7 +5,7 @@ import "../styles/ChatButton.css";
 import "../styles/ChatbotModal.css";
 import LoadingDots from "./LoadingDots";
 import { setupBotStatusChecker } from "../utils/botStatusChecker";
-import { sendChatMessage } from "../utils/chatMessageHandler";
+import { sendChatMessage, cancelPendingRequests } from "../utils/chatMessageHandler";
 import {
   onlineIcon,
   offlineIcon,
@@ -89,8 +89,11 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
   };
 
   const handleEndChat = () => {
+    // Cancel any pending message requests
+    cancelPendingRequests();
     setRoomId(null);
     setMessages([]);
+    setIsLoading(false); // Reset loading state to prevent the loading indicator from showing in the new chat
     setMenuState("exiting");
     setInputState("entering");
     setTimeout(() => {
@@ -158,13 +161,17 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
     setIsLoading(true);
 
     const result = await sendChatMessage(inputText, currentRoomId, apiBaseUrl);
-    setMessages((prev) => [
-      ...prev,
-      {
-        type: result.success ? "chatbot" : "chatbot failed",
-        text: result.response,
-      },
-    ]);
+    
+    // Only add the response message if the request wasn't aborted
+    if (result !== null) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          type: result.success ? "chatbot" : "chatbot failed",
+          text: result.response,
+        },
+      ]);
+    }
 
     setIsLoading(false);
   };
@@ -192,7 +199,7 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
   };
 
   return (
-    <div className="kai-chatbot-container">
+    <>
       <button
         className={`chat-button 
           ${isOnline ? "online" : "offline"} 
@@ -352,7 +359,7 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
           )}
         </div>
       )}
-    </div>
+      </>
   );
 };
 
