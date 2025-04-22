@@ -12,14 +12,17 @@
   position: fixed;
   bottom: 125px;
   right: 44px;
+  box-sizing: content-box;
 }
 
 .chatbot-modal.entering {
   animation: slideUp 300ms ease-out forwards;
+  box-sizing: content-box;
 }
 
 .chatbot-modal.exiting {
   animation: slideDown 300ms ease-out forwards;
+  box-sizing: content-box;
 }
 
 @keyframes slideUp {
@@ -77,6 +80,7 @@
   border-top-left-radius: 31px;
   border-top-right-radius: 31px;
   border: none;
+  box-sizing: content-box;
 }
 
 .chatbot-info {
@@ -93,6 +97,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: 28px; /* 140% */
+  box-sizing: content-box;
 }
 
 .options-icon {
@@ -100,6 +105,7 @@
   padding: 0;
   background: none;
   border: none;
+  box-sizing: content-box;
 }
 
 .chatbot-content {
@@ -115,10 +121,12 @@
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
+  box-sizing: content-box;
 }
 
 .chatbot-content::-webkit-scrollbar {
   display: none;
+  box-sizing: content-box;
 }
 
 .tnc {
@@ -133,6 +141,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 12px; /* 120% */
+  box-sizing: content-box;
 }
 
 .message {
@@ -159,24 +168,29 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
+  box-sizing: content-box;
 }
 
 .message * {
   margin: 0px;
   overflow-wrap: break-word;
+  box-sizing: content-box;
 }
 
 .message ol,
 ul {
   padding-left: 20px;
+  box-sizing: content-box;
 }
 
 .chatbot {
   margin-right: 32px;
+  box-sizing: content-box;
 }
 
 .chatbot.failed {
   color: #e85b56;
+  box-sizing: content-box;
 }
 
 .chatbot code:not(pre > code) {
@@ -191,6 +205,7 @@ ul {
   font-weight: 400;
   line-height: 14px;
   padding: 0 2px;
+  box-sizing: content-box;
 }
 
 .chatbot a {
@@ -202,6 +217,7 @@ ul {
   text-decoration-thickness: auto;
   text-underline-offset: auto;
   text-underline-position: from-font;
+  box-sizing: content-box;
 }
 
 .chatbot > pre {
@@ -213,6 +229,7 @@ ul {
   border: 1px solid
     var(--Color-Brand---Neon-Lime-brand-5-opacity, rgba(191, 240, 9, 0.25));
   background: var(--Color-Elevation-elevation-10, rgba(255, 255, 255, 0.05));
+  box-sizing: content-box;
 }
 
 .chatbot > pre > code {
@@ -222,6 +239,7 @@ ul {
   font-style: normal;
   font-weight: 400;
   line-height: 14px; /* 140% */
+  box-sizing: content-box;
 }
 
 .user {
@@ -230,6 +248,7 @@ ul {
   background-color: #bff009;
   color: #040404;
   white-space: pre-wrap;
+  box-sizing: content-box;
 }
 
 .user code:not(pre > code) {
@@ -243,6 +262,7 @@ ul {
   border: 1px solid var(--Color-Brand---Neon-Lime-brand-7, #99c007);
   background: var(--Color-Decorative-Lemon, #f8feb4);
   padding: 0 2px;
+  box-sizing: content-box;
 }
 
 .user > pre {
@@ -252,6 +272,7 @@ ul {
   border-radius: var(--Radius-half, 4px);
   border: 1px solid var(--Color-Brand---Neon-Lime-brand-7, #99c007);
   background: var(--Color-Decorative-Lemon, #f8feb4);
+  box-sizing: content-box;
 }
 
 .user > pre > code {
@@ -261,6 +282,7 @@ ul {
   font-style: normal;
   font-weight: 400;
   line-height: 14px; /* 140% */
+  box-sizing: content-box;
 }
 
 .user a {
@@ -271,6 +293,7 @@ ul {
   text-decoration-thickness: auto;
   text-underline-offset: auto;
   text-underline-position: from-font;
+  box-sizing: content-box;
 }
 
 .chatbot-input {
@@ -278,6 +301,7 @@ ul {
   height: 40px;
   align-self: stretch;
   position: relative;
+  box-sizing: content-box;
 }
 
 .chatbot-input > textarea {
@@ -306,6 +330,7 @@ ul {
 
 .chatbot-input > textarea:disabled {
   cursor: not-allowed;
+  box-sizing: content-box;
 }
 
 .send-button {
@@ -321,6 +346,7 @@ ul {
   right: 0;
   bottom: 0;
   margin: 0 12px 12px 0;
+  box-sizing: content-box;
 }
 
 .send-button:disabled {
@@ -328,6 +354,7 @@ ul {
     var(--Color-Elevation-elevation-8, rgba(255, 255, 255, 0.13));
   background: var(--Color-Elevation-elevation-8, rgba(255, 255, 255, 0.13));
   cursor: not-allowed;
+  box-sizing: content-box;
 }
 
 .send-button-background {
@@ -338,16 +365,19 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: content-box;
 }
 
 .send-button:disabled .send-button-background {
   border-radius: var(--Radius-6, 360px);
   background: var(--Color-Elevation-elevation-9, rgba(255, 255, 255, 0.07));
+  box-sizing: content-box;
 }
 
 .send-button-background > img {
   width: 16px;
   height: 16px;
+  box-sizing: content-box;
 }
 
 .menu-modal {
@@ -366,16 +396,19 @@ ul {
   left: 0;
   right: 0;
   overflow: hidden;
+  box-sizing: content-box;
 }
 
 .menu-modal.entering,
 .chatbot-input.entering {
   animation: wipeUp 300ms ease-out forwards;
+  box-sizing: content-box;
 }
 
 .menu-modal.exiting,
 .chatbot-input.exiting {
   animation: wipeDown 300ms ease-out forwards;
+  box-sizing: content-box;
 }
 
 .menu-modal > button {
@@ -389,6 +422,7 @@ ul {
   color: #c8c8c8;
   font-feature-settings: "cv13" on;
   text-overflow: ellipsis;
+  box-sizing: content-box;
 
   /* EN/body/md_400(regular) */
   font-family: Manrope;
@@ -403,6 +437,7 @@ ul {
 
 .menu-modal > button > span {
   margin-left: 12px;
+  box-sizing: content-box;
 }
 
 .email-transcript-modal {
@@ -419,14 +454,17 @@ ul {
   /* shadow_faint_8.16 */
   box-shadow: 0px var(--Sizing-1, 8px) var(--Sizing-3, 16px) 0px
     var(--Color-Elevation-elevation-9, rgba(255, 255, 255, 0.07));
+  box-sizing: content-box;
 }
 
 .email-transcript-modal.entering {
   animation: wipeUp 300ms ease-out forwards;
+  box-sizing: content-box;
 }
 
 .email-transcript-modal.exiting {
   animation: wipeDown 300ms ease-out forwards;
+  box-sizing: content-box;
 }
 
 .email-input {
@@ -436,6 +474,7 @@ ul {
   align-self: stretch;
   position: relative;
   flex-direction: column;
+  box-sizing: content-box;
 }
 
 .email-input > input {
@@ -455,12 +494,14 @@ ul {
   line-height: 20px;
 
   color: var(--Color-Greyscale-grey-0, #fff);
+  box-sizing: content-box;
 }
 
 .email-input > input.invalid {
   color: #e85b56;
   border: 1px solid #e85b56;
   font-weight: 500;
+  box-sizing: content-box;
 }
 
 .email-input > img {
@@ -470,6 +511,7 @@ ul {
   right: 24px;
   top: 12px;
   cursor: pointer;
+  box-sizing: content-box;
 }
 
 .invalid-email-error-message {
@@ -482,6 +524,7 @@ ul {
   font-style: normal;
   font-weight: 400;
   line-height: 16px;
+  box-sizing: content-box;
 }
 
 .button-group {
@@ -492,6 +535,7 @@ ul {
   padding: 12px;
   border-top: solid 1px
     var(--Color-Elevation-elevation-8, rgba(255, 255, 255, 0.13));
+  box-sizing: content-box;
 }
 
 .button-group > button {
@@ -507,6 +551,7 @@ ul {
   text-align: center;
   font-feature-settings: "cv13" on;
   cursor: pointer;
+  box-sizing: content-box;
 }
 
 .cancel-button {
@@ -514,10 +559,12 @@ ul {
 
   border: 1px solid var(--Color-Brand---Neon-Lime-brand-5, #bff009);
   background: var(--Color-Elevation-elevation-10, rgba(255, 255, 255, 0.05));
+  box-sizing: content-box;
 }
 
 .email-send-button {
   color: var(--Color-Elevation-elevation-8, rgba(255, 255, 255, 0.13));
+  box-sizing: content-box;
 
   border: 1px solid
     var(--Color-Elevation-elevation-8, rgba(255, 255, 255, 0.13));
@@ -527,5 +574,6 @@ ul {
 .email-send-button.active {
   color: var(--Color-Greyscale-grey-10, #040404);
   background: var(--Color-Brand---Neon-Lime-brand-5, #bff009);
+  box-sizing: content-box;
   border: none;
 }

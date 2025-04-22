@@ -3,6 +3,7 @@
 
 .chatbot-container{
   z-index: 9999;
+  box-sizing: content-box;
 }
 
 .chat-button {
@@ -31,6 +32,8 @@
   align-items: center;
 
   cursor: pointer;
+  box-sizing: border-box; /* Changed from content-box to border-box */
+
 }
 
 /* Hover effect for desktop */
@@ -44,17 +47,20 @@
 @media (hover: none) {
   .chat-button.online:active {
     transform: translateY(-20px);
+    box-sizing: border-box;
   }
 }
 
 /* Online state styling */
 .chat-button.online.close {
   background: #bff009;
+  box-sizing: border-box;
 }
 
 /* Online state styling */
 .chat-button.online.open {
   background: var(--Color-Greyscale-grey-9, #1c1c1c);
+  box-sizing: border-box;
 }
 
 /* Offline state styling */
@@ -64,28 +70,33 @@
   /* shadow_faint_16.32 */
   box-shadow: 0px var(--Sizing-3, 16px) var(--Sizing-7, 32px) 0px
     var(--Color-Elevation-elevation-9, rgba(255, 255, 255, 0.07));
+    box-sizing: border-box;
 }
 
 /* Control icon visibility based on status */
 .chat-button.online .offline-icon,
 .chat-button.offline .online-icon {
   display: none;
+  box-sizing: border-box;
 }
 
 .chat-button img {
   flex-shrink: 0;
   object-fit: contain;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  box-sizing: border-box;
 }
 
 .chat-button img.exiting {
   opacity: 0;
   transform: scale(0.9);
+  box-sizing: border-box;
 }
 
 .chat-button img.entering {
   opacity: 1;
   transform: scale(1);
+  box-sizing: border-box;
 }
 
 .tooltip {
@@ -95,7 +106,8 @@
   align-items: flex-start;
   gap: 16px;
   width: 224px;
-  height: 40px;
+  height: auto;
+  box-sizing: content-box;
 
   border-radius: var(--Radius-3, 24px);
   background: var(--Color-Greyscale-grey-8, #343434);
@@ -121,4 +133,5 @@
   border-width: 6px;
   border-style: solid;
   border-color: #343434 transparent transparent transparent;
+  box-sizing: content-box;
 }
