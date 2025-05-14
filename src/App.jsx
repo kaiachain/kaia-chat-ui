@@ -4,17 +4,18 @@ import "./index.css";
 
 const App = () => {
   // Define the API base URL for local development/testing
-  // Set to your local API endpoint, or null to use the relative path default
+  // Set to your local API endpoint
   const localApiBaseUrl = "http://localhost:3001"; // Or null
 
   return (
       <ChatbotWidget 
-      apiBaseUrl={localApiBaseUrl}     // REQUIRED
-      // botName="my bot"                 OPTIONAL
-      // xLocation="10px"                 OPTIONAL
-      // yLocation="10px"                 OPTIONAL 
-      // mobileXLocation="20px"           OPTIONAL
-      // mobileYLocation="12px"           OPTIONAL
+      apiBaseUrl={localApiBaseUrl}                 // REQUIRED
+      // botName="YOUR_BOT_NAME"                   // OPTIONAL
+      // welcomeMessage="Hi, I am {botName}"       // OPTIONAL
+      // xLocation="10px"                          // OPTIONAL
+      // yLocation="10px"                          // OPTIONAL 
+      // mobileXLocation="20px"                    // OPTIONAL
+      // mobileYLocation="12px"                    // OPTIONAL
       />
   );
 };

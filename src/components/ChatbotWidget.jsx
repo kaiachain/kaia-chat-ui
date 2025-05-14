@@ -20,6 +20,7 @@ import {
 const ChatbotWidget = ({
   apiBaseUrl = null,
   botName = "Kaia AI Agent",
+  welcomeMessage = "Hello, I am {botName}, simply ask me a question! Anything is welcomed!",
   xLocation = "44px",
   yLocation = "44px",
   mobileXLocation = "25px",
@@ -114,8 +115,7 @@ const ChatbotWidget = ({
     const timestamp = new Date().toLocaleString();
     let transcriptContent = `Chat Transcript with ${botName}\n`;
     transcriptContent += `Generated on: ${timestamp}\n\n`;
-    transcriptContent += `${botName}: Hey there! 👋🏾\n`;
-    transcriptContent += `${botName}: Hello, I am Kaia AI Agent, simply ask me a question! Anything is welcomed!\n\n`;
+    transcriptContent += `${botName}: ${welcomeMessage.replace("{botName}", botName)}\n\n`;
 
     // Add all message history
     messages.forEach((msg) => {
@@ -270,12 +270,8 @@ const ChatbotWidget = ({
             </p>
 
             <div className="chatbot message">
-              <p>Hey there! 👋🏾</p>
-            </div>
-            <div className="chatbot message">
               <p>
-                Hello, I am {botName}, simply ask me a question! Anything is
-                welcomed!
+                {welcomeMessage.replace("{botName}", botName)}
               </p>
             </div>
 
