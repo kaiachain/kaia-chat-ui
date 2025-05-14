@@ -17,7 +17,14 @@ import {
   endChatIcon,
 } from "../assets";
 
-const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
+const ChatbotWidget = ({
+  apiBaseUrl = null,
+  botName = "Kaia AI Agent",
+  xLocation = "44px",
+  yLocation = "44px",
+  mobileXLocation = "25px",
+  mobileYLocation = "25px",
+}) => {
   const [isOnline, setIsOnline] = useState(true);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -198,6 +205,13 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
       });
   };
 
+  const widgetStyle = {
+    '--chat-button-x-location': xLocation,
+    '--chat-button-y-location': yLocation,
+    '--chat-button-mobile-x-location': mobileXLocation,
+    '--chat-button-mobile-y-location': mobileYLocation,
+  };
+
   return (
     <>
       <button
@@ -207,6 +221,7 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         aria-label={isChatOpen ? "Close chat" : "Open chat"}
+        style={widgetStyle}
       >
         {isOnline ? (
           <img

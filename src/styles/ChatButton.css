@@ -19,8 +19,8 @@
 
   /* Position fixed at 44px from right and bottom */
   position: fixed;
-  right: 44px;
-  bottom: 44px;
+  right: var(--chat-button-x-location); /* Use CSS variable with fallback */
+  bottom: var(--chat-button-y-location); /* Use CSS variable with fallback */
 
   /* Add transition for smooth animation */
   transition: transform 300ms ease-out;
@@ -39,8 +39,8 @@
 /* Mobile positioning */
 @media (max-width: 768px) {
   .chat-button {
-    right: 25px;
-    bottom: 25px;
+    right: var(--chat-button-mobile-x-location); /* Use CSS variable with fallback */
+    bottom: var(--chat-button-mobile-y-location); /* Use CSS variable with fallback */
   }
 }
 

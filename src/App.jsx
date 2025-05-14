@@ -8,7 +8,14 @@ const App = () => {
   const localApiBaseUrl = "http://localhost:3001"; // Or null
 
   return (
-      <ChatbotWidget apiBaseUrl={localApiBaseUrl} />
+      <ChatbotWidget 
+      apiBaseUrl={localApiBaseUrl}     // REQUIRED
+      // botName="my bot"                 OPTIONAL
+      // xLocation="10px"                 OPTIONAL
+      // yLocation="10px"                 OPTIONAL 
+      // mobileXLocation="20px"           OPTIONAL
+      // mobileYLocation="12px"           OPTIONAL
+      />
   );
 };
 
