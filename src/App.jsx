@@ -16,6 +16,7 @@ const App = () => {
       // yLocation="10px"                          // OPTIONAL 
       // mobileXLocation="20px"                    // OPTIONAL
       // mobileYLocation="12px"                    // OPTIONAL
+      // agentId="YOUR_ELIZA_AGENT_ID"             // OPTIONAL
       />
   );
 };

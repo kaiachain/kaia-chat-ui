@@ -1,7 +1,7 @@
 // Track active API requests
 let activeController = null;
 
-export const sendChatMessage = async (inputText, roomId, baseUrl) => {
+export const sendChatMessage = async (inputText, roomId, baseUrl, agentId) => {
   try {
     // Cancel any existing request
     if (activeController) {
@@ -12,7 +12,8 @@ export const sendChatMessage = async (inputText, roomId, baseUrl) => {
     activeController = new AbortController();
     const signal = activeController.signal;
 
-    const endpoint = `${baseUrl}/message`;
+    // Construct endpoint based on whether agentId is provided
+    const endpoint = agentId ? `${baseUrl}/${agentId}/message` : `${baseUrl}/message`;
 
     const response = await fetch(endpoint, {
       method: "POST",

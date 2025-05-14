@@ -19,6 +19,7 @@ import {
 
 const ChatbotWidget = ({
   apiBaseUrl = null,
+  agentId = null,
   botName = "Kaia AI Agent",
   welcomeMessage = "Hello, I am {botName}, simply ask me a question! Anything is welcomed!",
   xLocation = "44px",
@@ -167,7 +168,7 @@ const ChatbotWidget = ({
     setInputText("");
     setIsLoading(true);
 
-    const result = await sendChatMessage(inputText, currentRoomId, apiBaseUrl);
+    const result = await sendChatMessage(inputText, currentRoomId, apiBaseUrl, agentId);
     
     // Only add the response message if the request wasn't aborted
     if (result !== null) {
