@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import ReactMarkdown from "react-markdown";
 import "../styles/ChatButton.css";
 import "../styles/ChatbotModal.css";
+import "../styles/Theme.css";
 import LoadingDots from "./LoadingDots";
 import { setupBotStatusChecker } from "../utils/botStatusChecker";
 import { sendChatMessage, cancelPendingRequests } from "../utils/chatMessageHandler";
