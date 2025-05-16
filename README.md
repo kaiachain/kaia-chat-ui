@@ -21,9 +21,15 @@ import '@kaiachain/kaia-chat-ui/dist/kaia-chat-ui.css';
 function App() {
   return (
     <div>
-      <ChatbotWidget 
-        apiBaseUrl="YOUR_CHATBOT_BACKEND_API" 
-        botName="YOUR_CHATBOT_NAME"
+      <ChatbotWidget
+        apiBaseUrl="YOUR_BACKEND_API_URL"      // REQUIRED
+        // agentId="YOUR_AGENT_ID"             // OPTIONAL
+        // botName="YOUR_CHATBOT_NAME"         // OPTIONAL 
+        // welcomeMessage="Hi, I am {botName}" // OPTIONAL
+        // xLocation="44px"                    // OPTIONAL
+        // yLocation="44px"                    // OPTIONAL
+        // mobileXLocation="25px"              // OPTIONAL
+        // mobileYLocation="25px"              // OPTIONAL
       />
     </div>
   );
@@ -33,9 +39,38 @@ export default App;
 
 ```
 
+## Props
+
+The ChatbotWidget component accepts the following props:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `apiBaseUrl` | string | **Required** | Base URL for the chatbot API |
+| `agentId` | string | null | Optional ID to specify a specific agent/model |
+| `botName` | string | "Kaia AI Agent" | Name of the chatbot |
+| `welcomeMessage` | string | "Hello, I am {botName}, simply ask me a question! Anything is welcomed!" | Initial message shown when chat is opened. Add `{botName}` like shown in the example to dynamically add your Bot's name in the message. |
+| `xLocation` | string | "44px" | X position of chat button (desktop) |
+| `yLocation` | string | "44px" | Y position of chat button (desktop) |
+| `mobileXLocation` | string | "25px" | X position of chat button (mobile) |
+| `mobileYLocation` | string | "25px" | Y position of chat button (mobile) |
+
+## Features
+
+The ChatbotWidget includes the following features:
+
+- Online/offline status indicator based on backend availability
+- Responsive design for both desktop and mobile
+- Welcome message with customizable text
+- Markdown support for bot responses
+- Option to download chat transcript
+- Ability to end and start a new chat session
+- Real-time typing indicator
+
 ### Backend API Response Format
 
-The component expects the backend API endpoint provided in `apiBaseUrl` (e.g., `http://localhost:8080`) to handle POST requests to the `/message` path (so the full URL would be `http://localhost:8080/message`). The request should have a JSON body containing the user's message and the room ID:
+The component expects the backend API endpoint provided in `apiBaseUrl` (e.g., `http://localhost:3001`) to handle POST requests to the `/message` path, or `/{agentId}/message` if an agent ID is provided.
+
+The request will have a JSON body containing the user's message and the room ID:
 
 ```json
 {
@@ -62,7 +97,9 @@ If an error occurs, the response might look like:
 }
 ```
 
-Additionally, the component periodically checks a `/health` endpoint (relative to `apiBaseUrl`) using a GET request to verify the server's status and update the chat widget's online indicator. This endpoint is **required** for the component to correctly display the backend status. It must respond with the following JSON when the server is healthy:
+### Health Check Endpoint
+
+The component periodically checks a `/health` endpoint (relative to `apiBaseUrl`) using a GET request to verify the server's status and update the chat widget's online indicator. This endpoint is **required** for the component to correctly display the backend status. It must respond with the following JSON when the server is healthy:
 
 ```json
 {
