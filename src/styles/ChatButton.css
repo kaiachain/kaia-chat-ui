@@ -1,4 +1,4 @@
-.chatbot-container{
+.chatbot-container {
   z-index: 9999;
   box-sizing: content-box;
 }
@@ -30,14 +30,17 @@
 
   cursor: pointer;
   box-sizing: border-box; /* Changed from content-box to border-box */
-
 }
 
 /* Mobile positioning */
 @media (max-width: 768px) {
   .chat-button {
-    right: var(--chat-button-mobile-x-location); /* Use CSS variable with fallback */
-    bottom: var(--chat-button-mobile-y-location); /* Use CSS variable with fallback */
+    right: var(
+      --chat-button-mobile-x-location
+    ); /* Use CSS variable with fallback */
+    bottom: var(
+      --chat-button-mobile-y-location
+    ); /* Use CSS variable with fallback */
   }
 }
 
@@ -75,7 +78,7 @@
   /* shadow_faint_16.32 */
   box-shadow: 0px var(--Sizing-3, 16px) var(--Sizing-7, 32px) 0px
     var(--Color-Elevation-elevation-9, rgba(255, 255, 255, 0.07));
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Control icon visibility based on status */
@@ -125,9 +128,9 @@
   font-weight: 400;
   line-height: 20px;
 
-  position: absolute;
-  bottom: 115px;
-  right: 36px;
+  position: fixed;
+  bottom: calc(var(--chat-button-y-location) + 71px);
+  right: calc(var(--chat-button-x-location) - 8px);
 }
 
 .tooltip::after {
@@ -139,4 +142,12 @@
   border-style: solid;
   border-color: #343434 transparent transparent transparent;
   box-sizing: content-box;
+}
+
+/* Mobile positioning for tooltip */
+@media (max-width: 768px) {
+  .tooltip {
+    bottom: calc(var(--chat-button-mobile-y-location) + 71px);
+    right: calc(var(--chat-button-mobile-x-location) - 8px);
+  }
 }

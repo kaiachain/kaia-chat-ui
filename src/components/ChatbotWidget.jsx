@@ -241,7 +241,7 @@ const ChatbotWidget = ({
       </button>
 
       {showTooltip && !isOnline && (
-        <div className="tooltip">
+        <div className="tooltip" style={widgetStyle}>
           {botName} is on a quick coffee break! ☕ Don't worry, I'll be back soon.
         </div>
       )}
