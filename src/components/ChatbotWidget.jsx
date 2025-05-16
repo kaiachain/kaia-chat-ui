@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import ReactMarkdown from "react-markdown";
 import "../styles/ChatButton.css";
 import "../styles/ChatbotModal.css";
+import "../styles/Theme.css";
 import LoadingDots from "./LoadingDots";
 import { setupBotStatusChecker } from "../utils/botStatusChecker";
 import { sendChatMessage, cancelPendingRequests } from "../utils/chatMessageHandler";
@@ -17,7 +18,16 @@ import {
   endChatIcon,
 } from "../assets";
 
-const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
+const ChatbotWidget = ({
+  apiBaseUrl = null,
+  agentId = null,
+  botName = "Kaia AI Agent",
+  welcomeMessage = "Hello, I am {botName}, simply ask me a question! Anything is welcomed!",
+  xLocation = "44px",
+  yLocation = "44px",
+  mobileXLocation = "25px",
+  mobileYLocation = "25px",
+}) => {
   const [isOnline, setIsOnline] = useState(true);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -107,8 +117,7 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
     const timestamp = new Date().toLocaleString();
     let transcriptContent = `Chat Transcript with ${botName}\n`;
     transcriptContent += `Generated on: ${timestamp}\n\n`;
-    transcriptContent += `${botName}: Hey there! 👋🏾\n`;
-    transcriptContent += `${botName}: Hello, I am Kaia AI Agent, simply ask me a question! Anything is welcomed!\n\n`;
+    transcriptContent += `${botName}: ${welcomeMessage.replace("{botName}", botName)}\n\n`;
 
     // Add all message history
     messages.forEach((msg) => {
@@ -160,7 +169,7 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
     setInputText("");
     setIsLoading(true);
 
-    const result = await sendChatMessage(inputText, currentRoomId, apiBaseUrl);
+    const result = await sendChatMessage(inputText, currentRoomId, apiBaseUrl, agentId);
     
     // Only add the response message if the request wasn't aborted
     if (result !== null) {
@@ -198,6 +207,13 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
       });
   };
 
+  const widgetStyle = {
+    '--chat-button-x-location': xLocation,
+    '--chat-button-y-location': yLocation,
+    '--chat-button-mobile-x-location': mobileXLocation,
+    '--chat-button-mobile-y-location': mobileYLocation,
+  };
+
   return (
     <>
       <button
@@ -207,6 +223,7 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         aria-label={isChatOpen ? "Close chat" : "Open chat"}
+        style={widgetStyle}
       >
         {isOnline ? (
           <img
@@ -255,12 +272,8 @@ const ChatbotWidget = ({ apiBaseUrl = null, botName = "Kaia AI Agent" }) => {
             </p>
 
             <div className="chatbot message">
-              <p>Hey there! 👋🏾</p>
-            </div>
-            <div className="chatbot message">
               <p>
-                Hello, I am {botName}, simply ask me a question! Anything is
-                welcomed!
+                {welcomeMessage.replace("{botName}", botName)}
               </p>
             </div>
 
