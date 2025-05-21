@@ -79,12 +79,14 @@ The request will have a JSON body containing the user's message and the room ID:
 }
 ```
 
-The endpoint should respond with a JSON object containing a success flag and the bot's reply data:
+The endpoint should respond with a JSON object containing a success flag and an array of responses, where the first element contains the bot's reply text:
 
 ```json
 {
   "success": true,
-  "data": "Bot's response text"
+  "data": [
+    { "text": "Bot's response text" }
+  ]
 }
 ```
 
