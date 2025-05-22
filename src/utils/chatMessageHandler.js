@@ -33,8 +33,8 @@ export const sendChatMessage = async (inputText, roomId, baseUrl, agentId) => {
     activeController = null;
 
     return {
-      success: result.success,
-      response: result.data,
+      success: response.ok,
+      response: result[0].text,
     };
   } catch (error) {
     // If the request was aborted, return null
