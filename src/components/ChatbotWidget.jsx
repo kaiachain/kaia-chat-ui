@@ -97,6 +97,10 @@ const ChatbotWidget = ({
         setShowOptionsMenuModal(false);
         setShowInput(true);
       }, 300);
+      setTimeout(() => {
+        focusInput();
+        scrollToBottom();
+      }, 350);
     } else {
       setTimeout(() => {
         setShowOptionsMenuModal(true);
