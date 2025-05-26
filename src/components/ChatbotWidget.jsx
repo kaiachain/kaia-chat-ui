@@ -41,6 +41,7 @@ const ChatbotWidget = ({
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
   const [roomId, setRoomId] = useState(null);
+  const inputRef = useRef(null); 
 
   const isTouchDevice = () => {
     return "ontouchstart" in window || navigator.maxTouchPoints > 0;
@@ -54,6 +55,35 @@ const ChatbotWidget = ({
     return cleanupStatusChecker;
   }, [apiBaseUrl]);
 
+  useEffect(() => {
+    // Restore roomId and messages from localStorage on component mount
+    const storedRoomId = localStorage.getItem("roomId");
+    const storedMessages = localStorage.getItem("messages");
+
+    if (storedRoomId) {
+      setRoomId(storedRoomId);
+    }
+
+    if (storedMessages) {
+      setMessages(JSON.parse(storedMessages));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Persist roomId and messages to localStorage whenever they change
+    if (roomId) {
+      localStorage.setItem("roomId", roomId);
+    }
+
+    if (messages.length > 0) {
+      localStorage.setItem("messages", JSON.stringify(messages));
+    }
+  }, [roomId, messages]);
+
+  const focusInput = () => {
+    inputRef.current?.focus();
+  };
+
   const handleClick = () => {
     if (isOnline) {
       setIconState("exiting");
@@ -66,6 +96,10 @@ const ChatbotWidget = ({
           setShowInput(true);
         }
       }, 300);
+      setTimeout(() => {
+        focusInput();
+        scrollToBottom();
+      }, 350);
     }
     if (!isOnline && isTouchDevice()) {
       setShowTooltip(true);
@@ -88,6 +122,10 @@ const ChatbotWidget = ({
         setShowOptionsMenuModal(false);
         setShowInput(true);
       }, 300);
+      setTimeout(() => {
+        focusInput();
+        scrollToBottom();
+      }, 350);
     } else {
       setTimeout(() => {
         setShowOptionsMenuModal(true);
@@ -101,6 +139,8 @@ const ChatbotWidget = ({
   const handleEndChat = () => {
     // Cancel any pending message requests
     cancelPendingRequests();
+    localStorage.removeItem("roomId");
+    localStorage.removeItem("messages");
     setRoomId(null);
     setMessages([]);
     setIsLoading(false); // Reset loading state to prevent the loading indicator from showing in the new chat
@@ -183,6 +223,7 @@ const ChatbotWidget = ({
     }
 
     setIsLoading(false);
+    focusInput(); 
   };
 
   useEffect(() => {
@@ -323,6 +364,7 @@ const ChatbotWidget = ({
           {showInput && !showOptionsMenuModal && (
             <div className={`chatbot-input ${inputState}`}>
               <textarea
+                ref={inputRef} 
                 placeholder="Write your message"
                 aria-label="Type your message"
                 value={inputText}
