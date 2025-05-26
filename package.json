@@ -1,6 +1,6 @@
 {
   "name": "@kaiachain/kaia-chat-ui",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A customizable chat UI component for by Kaia",
   "type": "module",
   "license": "MIT",
