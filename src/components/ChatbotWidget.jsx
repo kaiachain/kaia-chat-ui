@@ -41,6 +41,7 @@ const ChatbotWidget = ({
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
   const [roomId, setRoomId] = useState(null);
+  const inputRef = useRef(null); 
 
   const isTouchDevice = () => {
     return "ontouchstart" in window || navigator.maxTouchPoints > 0;
@@ -54,6 +55,10 @@ const ChatbotWidget = ({
     return cleanupStatusChecker;
   }, [apiBaseUrl]);
 
+  const focusInput = () => {
+    inputRef.current?.focus();
+  };
+
   const handleClick = () => {
     if (isOnline) {
       setIconState("exiting");
@@ -66,6 +71,9 @@ const ChatbotWidget = ({
           setShowInput(true);
         }
       }, 300);
+      setTimeout(() => {
+        focusInput();
+      }, 350);
     }
     if (!isOnline && isTouchDevice()) {
       setShowTooltip(true);
@@ -183,6 +191,7 @@ const ChatbotWidget = ({
     }
 
     setIsLoading(false);
+    focusInput(); 
   };
 
   useEffect(() => {
@@ -323,6 +332,7 @@ const ChatbotWidget = ({
           {showInput && !showOptionsMenuModal && (
             <div className={`chatbot-input ${inputState}`}>
               <textarea
+                ref={inputRef} 
                 placeholder="Write your message"
                 aria-label="Type your message"
                 value={inputText}
