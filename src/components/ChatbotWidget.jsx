@@ -73,6 +73,7 @@ const ChatbotWidget = ({
       }, 300);
       setTimeout(() => {
         focusInput();
+        scrollToBottom();
       }, 350);
     }
     if (!isOnline && isTouchDevice()) {
