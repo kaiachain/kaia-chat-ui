@@ -55,6 +55,31 @@ const ChatbotWidget = ({
     return cleanupStatusChecker;
   }, [apiBaseUrl]);
 
+  useEffect(() => {
+    // Restore roomId and messages from localStorage on component mount
+    const storedRoomId = localStorage.getItem("roomId");
+    const storedMessages = localStorage.getItem("messages");
+
+    if (storedRoomId) {
+      setRoomId(storedRoomId);
+    }
+
+    if (storedMessages) {
+      setMessages(JSON.parse(storedMessages));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Persist roomId and messages to localStorage whenever they change
+    if (roomId) {
+      localStorage.setItem("roomId", roomId);
+    }
+
+    if (messages.length > 0) {
+      localStorage.setItem("messages", JSON.stringify(messages));
+    }
+  }, [roomId, messages]);
+
   const focusInput = () => {
     inputRef.current?.focus();
   };
@@ -114,6 +139,8 @@ const ChatbotWidget = ({
   const handleEndChat = () => {
     // Cancel any pending message requests
     cancelPendingRequests();
+    localStorage.removeItem("roomId");
+    localStorage.removeItem("messages");
     setRoomId(null);
     setMessages([]);
     setIsLoading(false); // Reset loading state to prevent the loading indicator from showing in the new chat
