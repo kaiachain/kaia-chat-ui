@@ -10,6 +10,7 @@ const App = () => {
       apiBaseUrl={localApiBaseUrl}                 // REQUIRED
       // botName="YOUR_BOT_NAME"                   // OPTIONAL
       // welcomeMessage="Hi, I am {botName}"       // OPTIONAL
+      // tncURL="https://example.com/terms"        // OPTIONAL
       // xLocation="10px"                          // OPTIONAL
       // yLocation="10px"                          // OPTIONAL 
       // mobileXLocation="20px"                    // OPTIONAL

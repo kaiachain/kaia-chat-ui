@@ -23,6 +23,7 @@ const ChatbotWidget = ({
   agentId = null,
   botName = "Kaia AI Agent",
   welcomeMessage = "Hello, I am {botName}, simply ask me a question! Anything is welcomed!",
+  tncURL = null,
   xLocation = "44px",
   yLocation = "44px",
   mobileXLocation = "25px",
@@ -308,9 +309,23 @@ const ChatbotWidget = ({
           </div>
 
           <div className="chatbot-content">
-            <p className="tnc" style={{ marginBottom: "6px" }}>
-              TnC applied
-            </p>
+            {tncURL && (
+              <p 
+                className="tnc" 
+                onClick={() => window.open(tncURL, '_blank', 'noopener,noreferrer')}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    window.open(tncURL, '_blank', 'noopener,noreferrer');
+                  }
+                }}
+                aria-label="Open Terms and Conditions in new tab"
+              >
+                TnC applied
+              </p>
+            )}
 
             <div className="chatbot message">
               <p>

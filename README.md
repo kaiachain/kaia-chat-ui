@@ -26,6 +26,7 @@ function App() {
         // agentId="YOUR_AGENT_ID"             // OPTIONAL
         // botName="YOUR_CHATBOT_NAME"         // OPTIONAL 
         // welcomeMessage="Hi, I am {botName}" // OPTIONAL
+        // tncURL="YOUR_TERMS_URL"             // OPTIONAL
         // xLocation="44px"                    // OPTIONAL
         // yLocation="44px"                    // OPTIONAL
         // mobileXLocation="25px"              // OPTIONAL
@@ -49,6 +50,7 @@ The ChatbotWidget component accepts the following props:
 | `agentId` | string | null | Optional ID to specify a specific agent/model |
 | `botName` | string | "Kaia AI Agent" | Name of the chatbot |
 | `welcomeMessage` | string | "Hello, I am {botName}, simply ask me a question! Anything is welcomed!" | Initial message shown when chat is opened. Add `{botName}` like shown in the example to dynamically add your Bot's name in the message. |
+| `tncURL` | string | null | Optional URL for terms and conditions. When provided, shows a clickable "TnC applied" link that opens the URL in a new tab |
 | `xLocation` | string | "44px" | X position of chat button (desktop) |
 | `yLocation` | string | "44px" | Y position of chat button (desktop) |
 | `mobileXLocation` | string | "25px" | X position of chat button (mobile) |
@@ -58,13 +60,19 @@ The ChatbotWidget component accepts the following props:
 
 The ChatbotWidget includes the following features:
 
-- Online/offline status indicator based on backend availability
-- Responsive design for both desktop and mobile
-- Welcome message with customizable text
-- Markdown support for bot responses
-- Option to download chat transcript
-- Ability to end and start a new chat session
-- Real-time typing indicator
+- **Online/offline status indicator** - Shows real-time backend availability with visual indicators
+- **Responsive design** - Optimized for both desktop and mobile devices
+- **Customizable positioning** - Adjustable chat button placement for desktop and mobile
+- **Welcome message** - Personalized greeting with bot name placeholder support
+- **Terms and conditions** - Optional clickable TnC link that opens in a new tab
+- **Markdown support** - Rich text formatting for bot responses including tables, lists, and code blocks
+- **Chat persistence** - Automatic saving and restoration of chat history using localStorage
+- **Transcript download** - Export chat conversations as text files
+- **Session management** - End current chat and start fresh conversations
+- **Real-time typing indicator** - Shows when the bot is processing responses
+- **Keyboard shortcuts** - Enter to send, Shift+Enter for new lines
+- **Touch device support** - Enhanced mobile experience with touch-friendly interactions
+- **Accessibility** - ARIA labels and keyboard navigation support
 
 ### Backend API Response Format
 
@@ -98,6 +106,26 @@ If an error occurs, the response might look like:
   "data": "Error message or details"
 }
 ```
+
+### Chat Persistence
+
+The component automatically saves chat history to the browser's localStorage, including:
+- Room ID for maintaining conversation context
+- Complete message history between user and bot
+- Session restoration on page reload
+
+Chat data is cleared when using the "End Chat" option from the options menu.
+
+### Supported Markdown Elements
+
+The chatbot supports rich text formatting in responses, including:
+- **Text formatting**: Bold, italic, inline code
+- **Headings**: H1 through H6
+- **Lists**: Ordered and unordered lists
+- **Links**: Clickable hyperlinks
+- **Tables**: Structured data display
+- **Code blocks**: Syntax-highlighted code snippets
+- **Paragraphs**: Standard text formatting
 
 ### Health Check Endpoint
 
