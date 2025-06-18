@@ -87,15 +87,16 @@ The request will have a JSON body containing the user's message and the room ID:
 }
 ```
 
-The endpoint should respond with a JSON object containing a success flag and an array of responses, where the first element contains the bot's reply text:
+The endpoint should respond with a JSON array of message objects:
 
 ```json
-{
-  "success": true,
-  "data": [
-    { "text": "Bot's response text" }
-  ]
-}
+[
+    {
+        "user": "YOUR_AGENT_NAME",
+        "text": "Hello again! What specific aspect of the Kaia Blockchain are you interested in? I can help with details on smart contracts, gas optimization, or any other Kaia-related topics you're curious about!",
+        "action": "ELIZA_ACTION"
+    }
+]
 ```
 
 If an error occurs, the response might look like:
